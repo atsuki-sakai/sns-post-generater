@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "sns-post-generater",
+  "name": "sns-post-generate",
   "main": "./src/worker/index.ts",
   "compatibility_date": "2025-04-01",
   "compatibility_flags": ["nodejs_compat"],
@@ -11,5 +11,36 @@
   "assets": {
     "directory": "./dist/client",
     "not_found_handling": "single-page-application"
-  }
+  },
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "replace-with-production-kv-id",
+      "preview_id": "replace-with-preview-kv-id"
+    }
+  ],
+  "workflows": [
+    {
+      "name": "sns-post-workflow",
+      "binding": "POST_WORKFLOW",
+      "class_name": "SnsPostWorkflow"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sns-post-db",
+      "database_id": "cf12c3ce-89aa-419e-919f-8596a254dc27",
+      "migrations_dir": "./migrations"
+    }
+  ],
+  "ai": {
+    "binding": "AI"
+  },
+  "r2_buckets": [
+    {
+      "binding": "IMAGES",
+      "bucket_name": "sns-post-images"
+    }
+  ]
 }

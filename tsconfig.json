@@ -4,5 +4,16 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" },
     { "path": "./tsconfig.worker.json" }
-  ]
+  ],
+   "compilerOptions": {
+    "baseUrl": ".", 
+    "paths": {
+      "@/*": ["./src/*"],
+      "@app/*": ["./src/react-app/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@worker/*": ["./src/worker/*"],
+      "@components/*": ["./src/components/*"],
+      "@lib/*": ["./src/lib/*"]
+    }
+  }
 }
